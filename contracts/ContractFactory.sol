@@ -38,22 +38,22 @@ contract ContractFactory is Ownable {
         return address(my721);
     }
 
-    function deployERC1155() external onlyOwner returns (address) {
+    /*function deployERC1155() external onlyOwner returns (address) {
         My1155 my1155 = new My1155(_erc1155BaseUri);
         my1155tokens.push(my1155);
         my1155indexToContract[my1155tokens.length - 1] = address(my1155);
         my1155indexToOwner[my1155tokens.length - 1] = tx.origin;
         emit ERC1155deployed(tx.origin, address(my1155));
         return address(my1155);
-    }
+    }*/
 
     function mintERC721(uint256 index) external onlyOwner {
         my721tokens[index].mint(my721indexToOwner[index]);
         emit ERC721minted(my721indexToOwner[index]);
     }
-
+/*
     function mintERC1155(uint256 index, uint256 tokenId, uint256 amount) external onlyOwner {
         my1155tokens[index].mint(my1155indexToOwner[index], tokenId, amount);
         emit ERC1155minted(my1155indexToOwner[index], tokenId, amount);
-    }
+    }*/
 }
